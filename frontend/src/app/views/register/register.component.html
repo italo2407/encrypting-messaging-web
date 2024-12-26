@@ -1,0 +1,27 @@
+<div class="register-container">
+  <div class="flex-col-container gap-16" [formGroup]="form">
+    <h3>Registar nuevo usuario</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Nombres</mat-label>
+      <input
+        formControlName="name"
+        matInput
+        placeholder="Ingrese sus nombres"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Ingrese su email" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input
+        type="password"
+        formControlName="password"
+        matInput
+        placeholder="Ingrese su contraseña"
+      />
+    </mat-form-field>
+    <button mat-flat-button (click)="crearUsuario()">Crear usuario</button>
+  </div>
+</div>

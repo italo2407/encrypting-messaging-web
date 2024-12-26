@@ -1,0 +1,16 @@
+.login-container {
+  margin: 0 auto;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > div {
+    width: 400px;
+    text-align: center;
+  }
+}
+
+.mat-mdc-unelevated-button {
+  border-radius: 5px !important;
+}

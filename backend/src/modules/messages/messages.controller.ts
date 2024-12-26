@@ -17,9 +17,8 @@ export class MessagesController {
     const message = new Messages({
       title: body.title,
       senderId: body.senderId,
-      receiverId: body.receiverId,
     });
 
-    return this.messageService.send(message, body.content);
+    return this.messageService.send(message, body.content, body.receiverEmail);
   }
 }

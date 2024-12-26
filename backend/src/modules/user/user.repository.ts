@@ -9,6 +9,7 @@ import { User } from 'src/domain/entities/user';
 
 export abstract class UserRepository extends CrudBaseRepository<User> {
   abstract findByEmail(email: string): Promise<User>;
+  abstract findContainEmail(search: string): Promise<User[]>;
 }
 
 @Injectable()
@@ -25,5 +26,17 @@ export class PrismaUserRepository extends PrismaCrudBaseRepository<User> impleme
     });
 
     return PrismaUserMapper.toEntity(user);
+  }
+
+  async findContainEmail(search: string): Promise<User[]> {
+    const users = await this.prisma.user.findMany({
+      where: {
+        email: {
+          contains: search,
+        },
+      },
+    });
+
+    return PrismaUserMapper.toEntities(users);
   }
 }

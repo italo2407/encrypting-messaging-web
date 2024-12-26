@@ -8,7 +8,7 @@ export class MessageRequest {
   senderId?: string;
 
   @IsNotEmpty()
-  receiverId: string;
+  receiverEmail: string;
 
   @IsNotEmpty()
   content: string;

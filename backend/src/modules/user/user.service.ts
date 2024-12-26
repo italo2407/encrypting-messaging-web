@@ -25,6 +25,10 @@ export class UserService {
     return this.userRepository.findByEmail(email);
   }
 
+  async findContainEmail(search: string): Promise<User[]> {
+    return this.userRepository.findContainEmail(search);
+  }
+
   async create(user: User): Promise<User> {
     const { publicKey, privateKey } = await this.awsKmsService.generateDataKeyPair();
     user.password = await this.hashPassword(user.password);

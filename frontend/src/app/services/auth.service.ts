@@ -35,6 +35,10 @@ export class AuthService {
     this._user$.next(this.tokenService.decodeToken());
   }
 
+  getUser() {
+    return this._user$.getValue();
+  }
+
   isLoggedIn() {
     return !!this.tokenService.getToken();
   }

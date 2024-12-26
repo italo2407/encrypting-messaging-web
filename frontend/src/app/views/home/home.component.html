@@ -1,1 +1,30 @@
-<p>home works!</p>
+<div class="home-container flex-row-container gap-32">
+  <mat-card class="card-container" appearance="outlined" (click)="openDialog()">
+    <div class="card-image-container">
+      <img
+        class="card-image"
+        width="100px"
+        height="100px"
+        src="/assets/send-message.png"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+    <mat-card-content>
+      <p class="fw-700">Envío de Mensajes</p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="card-container" appearance="outlined" (click)="goToInbox()">
+    <div class="card-image-container">
+      <img
+        class="card-image"
+        width="100px"
+        height="100px"
+        src="/assets/inbox.png"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+    <mat-card-content>
+      <p class="fw-700">Mensajes Recibidos</p>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -16,6 +16,10 @@ export class AwsS3Service {
         accessKeyId: configService.get('AWS_ACCESS_KEY_ID'),
         secretAccessKey: configService.get('AWS_SECRET_ACCESS_KEY'),
       },
+      requestHandler: {
+        connectionTimeout: 300000, // 5 minutos para conectarse
+        socketTimeout: 300000,
+      },
     });
 
     this.bucketName = 'encrypting-messaging-bucket';
@@ -23,7 +27,7 @@ export class AwsS3Service {
 
   async uploadMessage(userId: string, encryptedMessage: Buffer): Promise<string> {
     const fileId = uuidv4();
-    const objectKey = `${userId}/messages/${fileId}.txt`;
+    const objectKey = `${userId}/messages/${fileId}`;
 
     const command = new PutObjectCommand({
       Bucket: this.bucketName,

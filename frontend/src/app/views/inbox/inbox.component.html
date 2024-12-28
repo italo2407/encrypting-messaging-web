@@ -1,1 +1,11 @@
-<p>inbox works!</p>
+<div class="inbox-container">
+    <h2>Inbox</h2>
+    <div class="email-list">
+      <div class="email-item" *ngFor="let message of messages">
+        <div class="email-sender">{{ message.senderId }}</div>
+        <div class="email-subject">{{ message.title }}</div>
+        <div class="email-snippet">{{ message.content }}</div>
+        <div class="email-date">{{ formatDate(message.createdAt) }}</div>
+      </div>
+    </div>
+  </div>

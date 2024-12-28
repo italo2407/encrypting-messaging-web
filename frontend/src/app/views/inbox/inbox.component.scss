@@ -1,0 +1,29 @@
+.inbox-container {
+    padding: 20px;
+  }
+  
+  .email-list {
+    border-top: 1px solid #ccc;
+  }
+  
+  .email-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .email-sender {
+    font-weight: bold;
+  }
+  
+  .email-subject {
+    font-size: 1.1em;
+  }
+  
+  .email-snippet {
+    color: #666;
+  }
+  
+  .email-date {
+    text-align: right;
+    color: #999;
+  }

@@ -3,7 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SendMessageComponent } from '../../components/send-message/send-message.component';
 import { UserService } from '../../services/user.service';
-import { MessageService } from '../../services/messages.service';
+import { MessageService } from '../../services/message.service';
 import { Router } from '@angular/router';
 
 @Component({

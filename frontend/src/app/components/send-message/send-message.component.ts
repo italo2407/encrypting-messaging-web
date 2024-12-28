@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
-import { MessageService } from '../../services/messages.service';
+import { MessageService } from '../../services/message.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
 
@@ -56,7 +56,7 @@ export class SendMessageComponent implements OnInit {
       ?.valueChanges.pipe(
         debounceTime(300), // Espera 300ms entre cambios
         distinctUntilChanged(), // Ignora valores iguales consecutivos
-        switchMap((value) => this.userService.search(value)) // Llama al servicio
+        switchMap((value: string) => this.userService.search(value)) // Llama al servicio
       )
       .subscribe((options: any) => {
         this.filteredOptions = options; // Actualiza las opciones filtradas
@@ -67,7 +67,8 @@ export class SendMessageComponent implements OnInit {
     this.isLoading = true;
     const { title, content, receiverEmail } = this.form.value;
     const sender = this.authService.getUser();
-    const senderId = sender ? sender.id : undefined;
+    const senderId = sender ? sender.sub : undefined;
+    console.log(senderId);
 
     this.messageService
       .send(receiverEmail, title, content, senderId)

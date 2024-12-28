@@ -1,8 +1,8 @@
 <mat-toolbar class="mat-toolbar-background mat-elevation-z8">
   <div class="mat-toolbar-content flex-row-container justify-between">
-    <a class="flex-row-container gap-8" (click)="goToHome()">
+    <a class="flex-row-container gap-8" (click)="goToHome()" style="cursor: pointer;">
       <mat-icon fontSet="material-icons-outlined">mail_lock</mat-icon>
-      <span class="fw-700 fs-16">Encrypted Messaging App</span>
+      <span class="fw-700 fs-16">Encrypted messaging app</span>
     </a>
     <div class="flex-row-container gap-8">
       <ng-container *ngIf="authService.user$ | async as user; else buttons">

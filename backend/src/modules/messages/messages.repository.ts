@@ -22,6 +22,15 @@ export class PrismaMessagesRepository
 
   async findByReceiverId(receiverId: string): Promise<Messages[]> {
     const messages = await this.prisma.messages.findMany({
+      include: {
+        sender: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+      },
       where: {
         receiverId,
       },

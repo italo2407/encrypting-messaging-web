@@ -16,19 +16,18 @@ export class MessagesService {
   ) {}
 
   async send(message: Messages, content: string, receiverEmail: string): Promise<Messages> {
-    console.log('1');
     const user = await this.userService.findByEmail(receiverEmail);
-    console.log('2');
+
     const encryptedMessage = encryptMessage(user.publicKey, content);
-    console.log('3');
+
     const bucketKey = await this.awsS3Service.uploadMessage(user.id, encryptedMessage);
-    console.log('4');
+
     const result = await this.messagesRepository.create({
       ...message,
       s3Path: bucketKey,
       receiverId: user.id,
     });
-    console.log('5');
+
     return result;
   }
 

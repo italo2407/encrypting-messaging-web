@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export class Messages {
   id?: string;
   title: string;
@@ -5,6 +7,7 @@ export class Messages {
   createdAt: Date;
   updatedAt: Date;
   senderId?: string;
+  sender: User;
   receiverId: string;
   content?: string;
   encryptedContent?: string;

@@ -68,7 +68,6 @@ export class SendMessageComponent implements OnInit {
     const { title, content, receiverEmail } = this.form.value;
     const sender = this.authService.getUser();
     const senderId = sender ? sender.sub : undefined;
-    console.log(senderId);
 
     this.messageService
       .send(receiverEmail, title, content, senderId)

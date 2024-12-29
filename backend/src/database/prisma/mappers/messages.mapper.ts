@@ -31,6 +31,7 @@ export class PrismaMessagesMapper {
         name: model.sender?.name,
         email: model.sender?.email,
       }),
+      isRead: model.isRead
     });
   }
 

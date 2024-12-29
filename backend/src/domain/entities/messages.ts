@@ -11,6 +11,7 @@ export class Messages {
   receiverId: string;
   content?: string;
   encryptedContent?: string;
+  isRead: boolean;
 
   constructor(data: Partial<Messages>) {
     Object.assign(this, data);

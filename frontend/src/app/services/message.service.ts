@@ -26,4 +26,8 @@ export class MessageService {
   getMessages(userId: string): Observable<Message []> {
     return this.http.get<Message []>('http://localhost:3000/messages/' + userId);
   }
+
+  markAsRead(messageId: string) {
+    return this.http.put('http://localhost:3000/messages/' + messageId + '/markAsRead', {});
+  }
 }

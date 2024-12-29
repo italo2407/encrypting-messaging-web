@@ -12,7 +12,7 @@ import { Message } from '../../models/message.model';
 })
 export class InboxComponent {
 
-  messages: Message[] = [];
+  messages: (Message & { expanded?: boolean})[] = [];
 
   constructor(private authService: AuthService, private messageService: MessageService) { }
 
@@ -24,8 +24,16 @@ export class InboxComponent {
     const user = this.authService.getUser();
     const userId = user ? user.sub : undefined;
     this.messageService.getMessages(userId).subscribe((res: Message[]) => {
-      this.messages = res;
+      this.messages = res.map(message => ({ ...message, expanded: false}));
     });
+  }
+
+  toggleExpand(message: Message & { expanded?: boolean}) {
+    message.expanded = !message.expanded;
+    if (message.expanded && !message.isRead) {
+      message.isRead = true;
+      this.messageService.markAsRead(message.id).subscribe();
+    }
   }
 
   formatDate(date: Date): string {

@@ -9,6 +9,7 @@ import { Messages } from 'src/domain/entities/messages';
 
 export abstract class MessagesRepository extends CrudBaseRepository<Messages> {
   abstract findByReceiverId(receiverId: string): Promise<Messages[]>;
+  abstract markAsRead(messageId: string): Promise<void>;
 }
 
 @Injectable()
@@ -37,5 +38,12 @@ export class PrismaMessagesRepository
     });
 
     return PrismaMessagesMapper.toEntities(messages);
+  }
+
+  async markAsRead(messageId: string): Promise<void> {
+    await this.prisma.messages.update({
+      where: { id: messageId },
+      data: { isRead: true },
+    });
   }
 }

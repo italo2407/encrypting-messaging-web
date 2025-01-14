@@ -48,11 +48,10 @@ export class MessagesService {
 
     return messagesWithContent;
   }
-  
+
   async markAsRead(id: string): Promise<void> {
     await this.messagesRepository.markAsRead(id);
   }
-    
 
   private async decryptMessage(privateKey: string, encryptedMessage: Buffer): Promise<string> {
     const privateKeyArrayInt8 = await this.awsKmsService.decryptPrivateKey(

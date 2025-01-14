@@ -3,12 +3,15 @@
 #Correr el docker para levantar instancia de DB postgres en local
 docker-compose -f docker.yml up -d
 
+*************** Frontend ****************
 #Instalar dependencias del frontend
 cd frontend
 npm install
 
 #Levantar el frontend 
 npm start
+
+*************** Backend ****************
 
 #Instalar dependencias del backend
 cd backend

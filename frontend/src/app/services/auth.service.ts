@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, shareReplay } from 'rxjs';
 import { TokenService } from './token.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post('http://localhost:3000/auth/login', { email, password })
+      .post(`${environment.serviceBaseUrl}/auth/login`, { email, password })
       .pipe(
         map((res: any) => {
           this.tokenService.setToken(res['access_token']);
@@ -24,7 +25,7 @@ export class AuthService {
   }
 
   registerUser(name: string, email: string, password: string) {
-    return this.http.post('http://localhost:3000/user', {
+    return this.http.post(`${environment.serviceBaseUrl}/user`, {
       name,
       email,
       password,

@@ -1,0 +1,32 @@
+<mat-toolbar class="mat-toolbar-background mat-elevation-z8">
+  <div class="mat-toolbar-content flex-row-container justify-between">
+    <a class="flex-row-container gap-8" (click)="goToHome()" style="cursor: pointer;">
+      <mat-icon fontSet="material-icons-outlined">mail_lock</mat-icon>
+      <span class="fw-700 fs-16">Encrypted messaging app</span>
+    </a>
+    <div class="flex-row-container gap-8">
+      <ng-container *ngIf="authService.user$ | async as user; else buttons">
+        <p>Hola, {{ user.name }}!</p>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="User Profile menu"
+        >
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <span mat-menu-item>{{ user.email }}</span>
+          <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+        </mat-menu>
+      </ng-container>
+      <ng-template #buttons>
+        <button mat-stroked-button (click)="goToLogin()">Iniciar Sesión</button>
+        <button mat-flat-button (click)="goToRegister()">Registrarse</button>
+      </ng-template>
+    </div>
+  </div>
+</mat-toolbar>
+
+<div class="app-container">
+  <router-outlet />
+</div>

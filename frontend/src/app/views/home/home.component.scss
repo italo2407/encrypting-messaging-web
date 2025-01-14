@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+
+.home-container {
+  // margin: 0 auto;
+  // width: 800px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.card-image {
+  text-align: center;
+}
+
+.card-image-container {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.mat-mdc-card-outlined {
+  background-color: #fff;
+}
+
+.card-container {
+  padding: 0 20px 20px 20px;
+  cursor: pointer;
+}

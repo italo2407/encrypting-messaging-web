@@ -1,0 +1,42 @@
+<div class="send-message-container">
+  <h3 class="fw-500">Enviar mensaje</h3>
+  <div class="flex-col-container gap-4" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Para</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="receiverEmail"
+        [matAutocomplete]="auto"
+        placeholder="Ingrese el destinatario"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions"
+          [value]="option.email"
+        >
+          {{ option.email }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Asunto</mat-label>
+      <input formControlName="title" matInput placeholder="Ingrese el asunto" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mensaje</mat-label>
+      <textarea matInput formControlName="content" rows="6"></textarea>
+    </mat-form-field>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-flat-button
+      (click)="send()"
+      [disabled]="form.invalid || isLoading"
+    >
+      Enviar
+    </button>
+  </mat-dialog-actions>
+</div>

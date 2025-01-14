@@ -1,0 +1,23 @@
+<div class="inbox-container">
+    <h2>Inbox</h2>
+    <div class="email-list">
+      <br>
+      <div class="email-item" *ngFor="let message of messages"
+      [class.expanded]="message.expanded"
+      [class.read]="message.isRead"
+      (click)="toggleExpand(message)">
+        <div class="email-sender">{{ message.sender!.name ? message.sender.name : "Anonymous" }}</div>
+        <div class="email-subject">{{ message.title }}</div>
+        <div class="email-snippet">{{ message.content }}</div>
+        <div class="email-date">{{ formatDate(message.createdAt) }}</div>
+        <div class="email-details" *ngIf="message.expanded">
+          <p><strong>From:</strong> {{ message.sender.email ? message.sender.email : "Anonymous" }}</p>
+          <p><strong>Date:</strong> {{ formatDate(message.createdAt) }}</p>
+          <p><strong>Subject:</strong> {{ message.title }}</p>
+          <p><strong>Content:</strong> {{ message.content }}</p>
+          <!-- <p><strong>Content:</strong></p> -->
+          <!-- <p>{{ message.content }}</p> -->
+        </div>
+      </div>
+    </div>
+  </div>

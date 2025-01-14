@@ -1,0 +1,34 @@
+#Tener versión de node >20
+
+#Correr el docker para levantar instancia de DB postgres en local
+docker-compose -f docker.yml up -d
+
+*************** Frontend ****************
+#Instalar dependencias del frontend
+cd frontend
+npm install
+
+#Levantar el frontend 
+npm start
+
+*************** Backend ****************
+
+#Instalar dependencias del backend
+cd backend
+npm install
+
+#Generar el modelo de datos de prisma 
+npx prisma generate
+
+#Generar Tablas en la base de datos (para esto la BD tiene q estar levantada y creada)
+npx prisma migrate deploy
+
+#Actualizar las variables de ambiente en el archivo .env con las key de Amazon
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=
+AWS_KMS_KEY_ID=
+
+#Levantar el backend
+npm start o npm run start:dev
+

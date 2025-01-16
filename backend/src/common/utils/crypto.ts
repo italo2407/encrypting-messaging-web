@@ -32,7 +32,6 @@ export function encryptMessage(publicKey: string, message: string) {
 }
 
 export function decryptMessage(privateKey: string, encryptedMessage: Buffer): string {
-  console.log(encryptedMessage.toString('utf-8'));
   const encryptedMessageContent = JSON.parse(encryptedMessage.toString('utf-8'));
   const { iv, authTag, encryptedData, encryptedKey } = encryptedMessageContent;
 
